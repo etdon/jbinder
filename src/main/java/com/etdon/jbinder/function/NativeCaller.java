@@ -34,4 +34,11 @@ public class NativeCaller {
 
     }
 
+    public void callDiscarding(@NotNull final NativeFunction... nativeFunctions) throws Throwable {
+
+        for (final NativeFunction nativeFunction : nativeFunctions)
+            this.call(nativeFunction);
+
+    }
+
 }
