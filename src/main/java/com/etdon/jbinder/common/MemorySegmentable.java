@@ -10,4 +10,6 @@ public interface MemorySegmentable {
     @NotNull
     MemorySegment createMemorySegment(@NotNull final Arena arena);
 
+    MemorySegmentable NULL = (_) -> MemorySegment.NULL;
+
 }
