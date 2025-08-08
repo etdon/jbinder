@@ -16,12 +16,12 @@ import java.util.Arrays;
 
 public abstract class NativeProcedure {
 
-    private final FunctionDescriptor functionDescriptor;
+    private final FunctionDescriptor signature;
 
-    public NativeProcedure(@NotNull final FunctionDescriptor functionDescriptor) {
+    public NativeProcedure(@NotNull final FunctionDescriptor signature) {
 
-        Preconditions.checkNotNull(functionDescriptor);
-        this.functionDescriptor = functionDescriptor;
+        Preconditions.checkNotNull(signature);
+        this.signature = signature;
 
     }
 
@@ -60,7 +60,14 @@ public abstract class NativeProcedure {
         Preconditions.checkNotNull(linker);
         Preconditions.checkNotNull(arena);
         Preconditions.checkNotNull(methodHandle);
-        return linker.upcallStub(methodHandle, this.functionDescriptor, arena);
+        return linker.upcallStub(methodHandle, this.signature, arena);
+
+    }
+
+    @NotNull
+    public FunctionDescriptor getSignature() {
+
+        return this.signature;
 
     }
 
