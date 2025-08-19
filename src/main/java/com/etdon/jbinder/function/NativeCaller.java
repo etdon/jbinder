@@ -23,7 +23,7 @@ public class NativeCaller {
 
     }
 
-    public Object call(@NotNull final NativeFunction nativeFunction) throws Throwable {
+    public <T> T call(@NotNull final NativeFunction<T> nativeFunction) throws Throwable {
 
         Preconditions.checkNotNull(nativeFunction);
         final SymbolLookup symbolLookup = nativeFunction.getLibrary().equals(DefaultLibrary.STD)
@@ -34,9 +34,9 @@ public class NativeCaller {
 
     }
 
-    public void callDiscarding(@NotNull final NativeFunction... nativeFunctions) throws Throwable {
+    public void callDiscarding(@NotNull final NativeFunction<?>... nativeFunctions) throws Throwable {
 
-        for (final NativeFunction nativeFunction : nativeFunctions)
+        for (final NativeFunction<?> nativeFunction : nativeFunctions)
             this.call(nativeFunction);
 
     }

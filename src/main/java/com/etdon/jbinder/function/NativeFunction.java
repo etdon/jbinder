@@ -9,7 +9,7 @@ import java.lang.foreign.Linker;
 import java.lang.foreign.SymbolLookup;
 import java.lang.invoke.MethodHandle;
 
-public abstract class NativeFunction {
+public abstract class NativeFunction<T> {
 
     private final String library;
     private final String name;
@@ -42,7 +42,7 @@ public abstract class NativeFunction {
 
     }
 
-    public abstract Object call(@NotNull final Linker linker, @NotNull final SymbolLookup symbolLookup) throws Throwable;
+    public abstract T call(@NotNull final Linker linker, @NotNull final SymbolLookup symbolLookup) throws Throwable;
 
     @NotNull
     public String getLibrary() {
